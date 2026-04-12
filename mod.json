@@ -1,0 +1,36 @@
+{
+	"geode": "5.6.1",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "xblazegmd.xblaze-geode-api",
+	"name": "Xblaze's Geode API",
+	"version": "v1.0.0",
+	"developer": "XblazeGMD",
+	"description": "Bunch of utils for my mods",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0",
+		"jouca.badgesapi": ">=1.4.1"
+	},
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		]
+	},
+	"api": {
+		"include": [
+			"include/*.hpp"
+		]
+	},
+	"settings": {
+		"supporter-badge": {
+			"type": "bool",
+			"name": "Show Supporter Badges",
+			"description": "Whether to show a supporter badge on a player's profile if they've supported XblazeGMD on his Patreon",
+			"default": true
+		}
+	}
+}
