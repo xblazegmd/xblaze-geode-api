@@ -8,7 +8,7 @@ using namespace geode::prelude;
 namespace xblazeapi {
     arc::Future<Result<PatreonSupporterTier>> patreonSupporterStatus(int accountID, int timeout) {
         auto req = web::WebRequest()
-            .userAgent("Geometry Dash/2.2081 XblazeAPI/1.0.0")
+            .userAgent("GeometryDash/2.2081 XblazeAPI/1.0.0")
             .timeout(std::chrono::seconds(timeout));
 
         auto res = co_await req.get(fmt::format("https://xblazegmd.vercel.app/patreon/tier?accountID={}", accountID));
