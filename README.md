@@ -27,7 +27,7 @@ First there's some variables defined that contain data you may find useful
 constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
 
 // The common secret
-constexpr std::string_view SECRET = "";
+constexpr std::string_view SECRET = "Wmfd2893gb7";
 ```
 
 There's also this nice function to make a request to the GD servers:

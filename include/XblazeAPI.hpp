@@ -24,7 +24,7 @@
 namespace xblazeapi {
     // gd server stuff
     constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
-    constexpr std::string_view SECRET = "";
+    constexpr std::string_view SECRET = "Wmfd2893gb7";
 
     /**
      * Make a request to the Geometry Dash servers.
