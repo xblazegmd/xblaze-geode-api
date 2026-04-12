@@ -31,6 +31,9 @@
 			"name": "Show Supporter Badges",
 			"description": "Whether to show a supporter badge on a player's profile if they've supported XblazeGMD on his Patreon",
 			"default": true
+		},
+		"remove": {
+			"type": "custom:remove-btn"
 		}
 	}
 }
