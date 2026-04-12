@@ -17,15 +17,17 @@ namespace xblazeapi {
         bool ret = false;
         arc::Notify notify;
 
-        geode::createQuickPopup(
-            title.c_str(),
-            msg.c_str(),
-            noBtn.c_str(), yesBtn.c_str(),
-            [&ret, notify](auto, bool btn2) {
-                ret = btn2;
-                notify.notifyAll();
-            }
-        );
+        geode::queueInMainThread([title, msg, yesBtn, noBtn, &ret, notify] {
+            geode::createQuickPopup(
+                title.c_str(),
+                msg.c_str(),
+                noBtn.c_str(), yesBtn.c_str(),
+                [&ret, notify](auto, bool btn2) {
+                    ret = btn2;
+                    notify.notifyAll();
+                }
+            );
+        });
 
         co_await notify.notified();
         co_return ret;
