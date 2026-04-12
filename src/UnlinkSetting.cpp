@@ -116,3 +116,7 @@ arc::Future<Result<>> UnlinkSettingNode::unlinkAccount(int accountID, argon::Acc
 
     co_return Ok();
 }
+
+$execute {
+    (void)Mod::get()->registerCustomSettingType("remove-btn", &UnlinkSetting::parse);
+}

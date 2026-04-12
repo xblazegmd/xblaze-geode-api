@@ -9,11 +9,6 @@
 
 using namespace geode::prelude;
 
-#include "UnlinkSetting.hpp"
-$execute {
-    (void)Mod::get()->registerCustomSettingType("remove-btn", &UnlinkSetting::parse);
-}
-
 class $modify(PPHook, ProfilePage) {
     struct Fields {
         async::TaskHolder<Result<xblazeapi::PatreonSupporterTier>> m_patreonTask;
