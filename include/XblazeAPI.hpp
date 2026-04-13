@@ -7,11 +7,9 @@
 #include <arc/future/Future.hpp>
 #include <matjson.hpp>
 
-#include <initializer_list>
 #include <string>
 #include <string_view>
 #include <unordered_map>
-#include <utility>
 
 #ifdef GEODE_IS_WINDOWS
     #ifdef XBLAZEAPI_EXPORTING
