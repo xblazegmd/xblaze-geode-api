@@ -9,14 +9,14 @@
 using namespace geode::prelude;
 
 namespace xblazeapi {
-    arc::Future<Result<std::string, int>> requestGDServers(
+    arc::Future<geode::Result<std::string, int>> requestGDServers(
         std::string_view endpoint,
-        const matjson::Value &body,
+        std::string_view body,
         int timeout
     ) {
         auto req = web::WebRequest()
             .userAgent("")
-            .bodyJSON(body)
+            .bodyString(body)
             .timeout(std::chrono::seconds(timeout));
 
         auto res = co_await req.post(fmt::format("{}{}", BOOMLINGS, endpoint));

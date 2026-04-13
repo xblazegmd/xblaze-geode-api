@@ -32,9 +32,7 @@ constexpr std::string_view SECRET = "Wmfd2893gb7";
 
 There's also this nice function to make a request to the GD servers:
 ```cpp
-auto res = co_await xblazeapi::requestGDServers("gjServerEndpoint.php", {
-    /* request body */
-});
+auto res = co_await xblazeapi::requestGDServers("gjServerEndpoint.php", "request=body");
 ```
 
 But even this function cannot save you of the pain of having to manually format the absolute mess of a response the GD servers give you... but what abt another function?

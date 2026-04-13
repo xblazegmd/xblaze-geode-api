@@ -7,9 +7,11 @@
 #include <arc/future/Future.hpp>
 #include <matjson.hpp>
 
+#include <initializer_list>
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <utility>
 
 #ifdef GEODE_IS_WINDOWS
     #ifdef XBLAZEAPI_EXPORTING
@@ -38,7 +40,7 @@ namespace xblazeapi {
      */
     XBLAZE_DLL arc::Future<geode::Result<std::string, int>> requestGDServers(
         std::string_view endpoint,
-        const matjson::Value& body,
+        std::string_view body,
         int timeout = 10
     );
 
