@@ -15,6 +15,10 @@
 		"geode.node-ids": ">=v1.20.0",
 		"jouca.badgesapi": ">=1.4.1"
 	},
+	"links": {
+		"homepage": "xblazegmd.vercel.app",
+		"source": "https://github.com/xblazegmd/xblaze-geode-api"
+	},
 	"resources": {
 		"sprites": [
 			"resources/*.png"
