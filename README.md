@@ -73,6 +73,10 @@ auto res = xblazeapi::confirmYesNoSync(
 // Simpler sleep functions
 co_await xblazeapi::sleepSecs(10);
 co_await xblazeapi::sleepMillis(100);
+
+// Quick error notifications
+xblazeapi::quickErrorNotification("Oops!");
+xblazeapi::quickErrorNotificationTS("Thread-safe!");
 ```
 
 ### Patreon stuff

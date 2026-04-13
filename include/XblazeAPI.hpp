@@ -123,6 +123,16 @@ namespace xblazeapi {
      */
     XBLAZE_DLL arc::Future<> sleepMillis(int m);
 
+    /**
+     * Create a quick error notification (not thread-safe, use `quickErrorNotificationTS` instead)
+     */
+    XBLAZE_DLL geode::Notification* quickErrorNotification(const std::string& msg);
+
+    /**
+     * Create a quick error notification (thread-safe)
+     */
+    XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
+
     // Patreon's stuff
 
     /**
