@@ -68,6 +68,13 @@ auto res = xblazeapi::confirmYesNoSync(
 );
 ```
 
+### Random stuff
+```cpp
+// Simpler sleep functions
+co_await xblazeapi::sleepSecs(10);
+co_await xblazeapi::sleepMillis(100);
+```
+
 ### Patreon stuff
 I'll be honest, the main reason I made this utils mod is so I could have a nice way all of my mods could show some nice badges to my patrons lol
 

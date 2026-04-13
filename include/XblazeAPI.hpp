@@ -111,6 +111,18 @@ namespace xblazeapi {
         geode::Function<void()> noCb = [] {}
     );
 
+    // Random stuff
+
+    /**
+     * Sleep for __ seconds
+     */
+    XBLAZE_DLL arc::Future<> sleepSecs(int s);
+
+    /**
+     * Sleep for __ milliseconds
+     */
+    XBLAZE_DLL arc::Future<> sleepMillis(int m);
+
     // Patreon's stuff
 
     /**
