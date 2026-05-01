@@ -11,7 +11,7 @@ namespace xblazeapi {
             .userAgent("GeometryDash/2.2081 XblazeAPI/1.0.0")
             .timeout(std::chrono::seconds(timeout));
 
-        auto res = co_await req.get(fmt::format("https://xblazegmd.vercel.app/patreon/tier?accountID={}", accountID));
+        auto res = co_await req.get(fmt::format("https://xblaze.netlify.app/patreon/tier?accountID={}", accountID));
         if (!res.ok()) {
             co_return Err("Failed to request API (): {}", res.code(), res.errorMessage());
         }

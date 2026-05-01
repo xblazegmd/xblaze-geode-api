@@ -16,7 +16,7 @@
 		"jouca.badgesapi": ">=1.4.1"
 	},
 	"links": {
-		"homepage": "https://xblazegmd.vercel.app",
+		"homepage": "https://xblaze.netlify.app",
 		"source": "https://github.com/xblazegmd/xblaze-geode-api"
 	},
 	"resources": {

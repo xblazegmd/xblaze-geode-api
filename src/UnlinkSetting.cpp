@@ -109,7 +109,7 @@ arc::Future<Result<>> UnlinkSettingNode::unlinkAccount(int accountID, argon::Acc
         .header("Authorization", token)
         .timeout(std::chrono::seconds(10));
 
-    auto res = co_await req.send("DELETE", fmt::format("https://xblazegmd.vercel.app/patreon/remove?accountID={}", accountID));
+    auto res = co_await req.send("DELETE", fmt::format("https://xblaze.netlify.app/patreon/remove?accountID={}", accountID));
     if (!res.ok()) {
         co_return Err("{} ({})", res.errorMessage(), res.code());
     }

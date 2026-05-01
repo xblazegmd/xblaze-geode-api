@@ -84,4 +84,4 @@ I'll be honest, the main reason I made this utils mod is so I could have a nice 
 
 There is *some* utils to get a patron's subscription status on my Patreon, but those are mainly for my mods and not meant for anyone else to use, so I won't document them here
 
-If you have joined my Patreon, you can claim a nice supporter badge by linking your Patreon account [here](https://xblazegmd.vercel.app/patreon/link)
+If you have joined my Patreon, you can claim a nice supporter badge by linking your Patreon account [here](https://xblaze.netlify.app/patreon/link)
