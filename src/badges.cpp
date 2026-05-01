@@ -12,6 +12,7 @@ using namespace geode::prelude;
 class $modify(PPHook, ProfilePage) {
     struct Fields {
         async::TaskHolder<Result<xblazeapi::PatreonSupporterTier>> m_patreonTask;
+        bool m_loaded = false;
     };
 
     void loadPageFromUserInfo(GJUserScore* score) {
@@ -22,6 +23,11 @@ class $modify(PPHook, ProfilePage) {
     }
 
     void loadBadge(int accountID) {
+        if (m_fields->m_loaded) {
+            addBadge(stringToTier(Mod::get()->getSavedValue<std::string>("patreon-tier")));
+            return;
+        }
+
         m_fields->m_patreonTask.spawn(
             "Patreon Tier Fetcher",
             xblazeapi::patreonSupporterStatus(accountID),
@@ -31,7 +37,9 @@ class $modify(PPHook, ProfilePage) {
                     return;
                 }
 
+                Mod::get()->setSavedValue("patreon-tier", tierToString(tier.unwrap()));
                 addBadge(tier.unwrap());
+                m_fields->m_loaded = true;
             }
         );
     }
@@ -66,6 +74,27 @@ class $modify(PPHook, ProfilePage) {
     }
 
     void onUpdate(CCObject* sender) {
+        m_fields->m_loaded = false;
         ProfilePage::onUpdate(sender);
+    }
+
+    std::string tierToString(xblazeapi::PatreonSupporterTier tier) {
+        switch (tier) {
+            case xblazeapi::PatreonSupporterTier::None:
+                return "none";
+            case xblazeapi::PatreonSupporterTier::PlainNormalSupporter:
+                return "plainnormalsupporter";
+            case xblazeapi::PatreonSupporterTier::AmazingBeautifulCrab:
+                return "amazingbeautifulcrab";
+        }
+    }
+
+    xblazeapi::PatreonSupporterTier stringToTier(const std::string& str) {
+        if (str == "plainnormalsupporter") {
+            return xblazeapi::PatreonSupporterTier::PlainNormalSupporter;
+        } else if (str == "amazingbeautifulcrab") {
+            return xblazeapi::PatreonSupporterTier::AmazingBeautifulCrab;
+        }
+        return  xblazeapi::PatreonSupporterTier::None;
     }
 };
