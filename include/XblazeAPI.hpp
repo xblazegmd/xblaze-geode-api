@@ -147,21 +147,21 @@ namespace xblazeapi {
     /**
      * Check if the current user is supporting XblazeGMD on Patreon
      */
-    XBLAZE_DLL arc::Future<geode::Result<PatreonSupporterTier>> patreonSupporterStatus(int accountID, int timeout = 10);
+    XBLAZE_DLL PatreonSupporterTier patreonSupporterStatus(int accountID);
 
     /**
      * Check if the user has any tier on XblazeGMD's Patreon.
      * This will only return `true` if the user is on a paid tier
      */
-    XBLAZE_DLL arc::Future<geode::Result<bool>> isPatreonSupporter(int accountID, int timeout = 10);
+    XBLAZE_DLL inline bool isPatreonSupporter(int accountID);
 
     /**
      * Check if the user has the 'Plain Normal Supporter Tier' on XblazeGMD's Patreon
      */
-    XBLAZE_DLL arc::Future<geode::Result<bool>> isPatreonPlainNormalSupporter(int accountID, int timeout = 10);
+    XBLAZE_DLL inline bool isPatreonPlainNormalSupporter(int accountID);
 
     /**
      * Check if the user has the 'Amazing Beautiful Crab Tier' on XblazeGMD's Patreon
      */
-    XBLAZE_DLL arc::Future<geode::Result<bool>> isPatreonAmazingBeautifulCrab(int accountID, int timeout = 10);
+    XBLAZE_DLL inline bool isPatreonAmazingBeautifulCrab(int accountID);
 }
