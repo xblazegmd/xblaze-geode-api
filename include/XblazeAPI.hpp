@@ -133,6 +133,11 @@ namespace xblazeapi {
      */
     XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
 
+    /**
+     * Do we have internet?
+     */
+    XBLAZE_DLL arc::Future<bool> doWeHaveInternet();
+
     // Patreon's stuff
 
     /**

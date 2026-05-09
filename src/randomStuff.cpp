@@ -25,4 +25,12 @@ namespace xblazeapi {
             Notification::create(msg, NotificationIcon::Error)->show();
         });
     }
+
+    arc::Future<bool> doWeHaveInternet() {
+        auto check = co_await web::WebRequest()
+            .userAgent("GeometryDash/2.2081")
+            .timeout(std::chrono::seconds(10))
+            .get("http://connectivitycheck.gstatic.com/generate_204");
+        co_return check.ok();
+    }
 }

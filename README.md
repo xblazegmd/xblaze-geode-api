@@ -77,6 +77,12 @@ co_await xblazeapi::sleepMillis(100);
 // Quick error notifications
 xblazeapi::quickErrorNotification("Oops!");
 xblazeapi::quickErrorNotificationTS("Thread-safe!");
+
+// Simple internet check
+bool connected = co_await xblazeapi::doWeHaveInternet();
+if (!connected) {
+    log::error("No internet connection!");
+}
 ```
 
 ### Patreon stuff
