@@ -138,6 +138,11 @@ namespace xblazeapi {
      */
     XBLAZE_DLL arc::Future<bool> doWeHaveInternet();
 
+    /**
+     * Do we have internet?
+     */
+    XBLAZE_DLL arc::Future<bool> doWeHaveInternet(const std::string& checkUrl);
+
     // Patreon's stuff
 
     /**
