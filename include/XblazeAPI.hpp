@@ -7,9 +7,11 @@
 #include <arc/future/Future.hpp>
 #include <matjson.hpp>
 
+#include <initializer_list>
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <utility>
 
 #ifdef GEODE_IS_WINDOWS
     #ifdef XBLAZEAPI_EXPORTING
@@ -53,6 +55,9 @@ namespace xblazeapi {
         std::string_view response,
         std::string sep = ":"
     );
+
+    // other web request stuff
+    XBLAZE_DLL std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body);
 
     // Proper confirm popup
 

@@ -8,7 +8,7 @@
 	},
 	"id": "xblazegmd.geode-api",
 	"name": "Xblaze's Geode API",
-	"version": "v1.1.0",
+	"version": "v1.2.0",
 	"developer": "XblazeGMD",
 	"description": "Bunch of utils for my mods",
 	"dependencies": {

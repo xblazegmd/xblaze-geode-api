@@ -1,6 +1,6 @@
-# 1.1.1
+# 1.2.0
 - Change badge fetching system to one that doesn't overwhelm my website (lol)
-- Add an internet check util
+- Add web request utils
 
 # 1.1.0
 - Switch API endpoint to `xblaze.netlify.app`
