@@ -23,6 +23,8 @@
     #define XBLAZE_DLL __attribute__((visibility("default")))
 #endif
 
+#define XBLAZE_UNWRAP_INTO_FUTURE(var, ...) GEODE_UNWRAP_INTO_BASE(co_return, var, __VA_ARGS__)
+
 namespace xblazeapi {
     // gd server stuff
     constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
