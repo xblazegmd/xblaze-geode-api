@@ -16,7 +16,7 @@ $execute {
     async::spawn(
         web::WebRequest()
             .timeout(std::chrono::seconds(10))
-            .get("https://raw.githubusercontent.com/xblazegmd/website/refs/heads/main/members.min.json"),
+            .get("https://raw.githubusercontent.com/xblazegmd/website/refs/heads/members/members.min.json"),
         [](web::WebResponse res) {
             if (!res.ok()) {
                 log::error("Failed to get patreon members: {}", res.code());
