@@ -65,12 +65,7 @@ namespace xblazeapi {
     /**
      * Do we have internet?
      */
-    XBLAZE_DLL arc::Future<bool> doWeHaveInternet();
-
-    /**
-     * Do we have internet?
-     */
-    XBLAZE_DLL arc::Future<bool> doWeHaveInternet(const std::string& checkUrl);
+    XBLAZE_DLL arc::Future<bool> doWeHaveInternet(const std::string& url = "http://connectivitycheck.gstatic.com/generate_204");
 
     // Proper confirm popup
 

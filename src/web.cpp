@@ -17,15 +17,19 @@ namespace xblazeapi {
         return string::join(ret, "&");
     }
 
-    arc::Future<bool> doWeHaveInternet() {
-        return doWeHaveInternet("http://connectivitycheck.gstatic.com/generate_204");
-    }
-
     arc::Future<bool> doWeHaveInternet(const std::string& url) {
-        auto check = co_await web::WebRequest()
-            .userAgent("GeometryDash/2.2081")
-            .timeout(std::chrono::seconds(10))
-            .get(url);
-        co_return check.ok();
+        #ifdef GEODE_IS_MOBILE
+            // I have no idea whether this is thread-safe or not, not risking it lol
+            auto res = co_await async::waitForMainThread([] {
+                return GameToolbox::doWeHaveInternet();
+            });
+            return ret;
+        #else
+            auto check = co_await web::WebRequest()
+                .userAgent("GeometryDash/2.2081")
+                .timeout(std::chrono::seconds(10))
+                .get(url);
+            co_return check.ok();
+        #endif
     }
 }
