@@ -1,13 +1,12 @@
 <img src="logo.png" width="80" alt="the mod's logo" />
 
 # Xblaze's Geode API
-A bunch of utility functions for my Geode mods
+A collection of the most random utilities ever for my Geode mods
 
 ## Installation
 Add this mod as a dependency on your `mod.json`
 ```json
 "dependencies": {
-	"geode.node-ids": ">=v1.20.0",
     "xblazegmd.geode-api": ">=1.0.0"
 }
 ```
@@ -44,6 +43,33 @@ auto formatted = xblazeapi::formatResponse(res.unwrap());
 auto formatted = xblazeapi::formatResponse(res.unwrap(), "~");
 ```
 
+### Web Utils
+Web requests are nice and easy. However there's a lot of stuff you need to write just to make a simple web request. So hopefully these utilities help you with some of the steps
+ 
+First of all there's this nice cross-platform helper function to check if you have internet:
+```cpp
+auto connected = co_await xblazeapi::doWeHaveInternet();
+if (!connected) {
+    // do stuff...
+}
+```
+
+This function will check the internet connection with `GameToolbox::doWeHaveInternet` on mobile, and with a simple web request on PC.
+
+The default URL to make a request to is `http://connectivitycheck.gstatic.com/generate_204`, however you can specify whichever one you wish:
+```cpp
+auto customURL = co_await xblazeapi::doWeHaveInternet("https://www.google.com"); // Check the connection with Google
+```
+
+Building POST request bodies can be a tedious process if you're using `bodyString`. While you could use other methods, if you REALLY need to use `bodyString`, there is a nice helper function to help you make it in a less tedious way:
+```cpp
+xblazeapi::buildBodyString({
+    { "this", "that" },
+    { "number", 1 },
+    { "subscribe", "toMyYt" }
+});
+```
+
 ### Confirm popups
 Have you ever wanted to just have an easier way to make a simple "Yes/No" popup? Sure, `geode::createQuickPopup` is good enough, but what abt a more *convenient* way?
 ```cpp
@@ -78,11 +104,8 @@ co_await xblazeapi::sleepMillis(100);
 xblazeapi::quickErrorNotification("Oops!");
 xblazeapi::quickErrorNotificationTS("Thread-safe!");
 
-// Simple internet check
-bool connected = co_await xblazeapi::doWeHaveInternet();
-if (!connected) {
-    log::error("No internet connection!");
-}
+// GEODE_UNWRAP_INTO but for futures
+XBLAZE_UNWRAP_INTO_FUTURE(int var, riskyFunction());
 ```
 
 ### Patreon stuff
