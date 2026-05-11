@@ -23,7 +23,7 @@ namespace xblazeapi {
             auto check = co_await async::waitForMainThread([] {
                 return GameToolbox::doWeHaveInternet();
             });
-            return check;
+            co_return check;
         #else
             auto check = co_await web::WebRequest()
                 .userAgent("GeometryDash/2.2081")
