@@ -57,7 +57,18 @@ namespace xblazeapi {
     );
 
     // other web request stuff
+
     XBLAZE_DLL std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body);
+
+    /**
+     * Do we have internet?
+     */
+    XBLAZE_DLL arc::Future<bool> doWeHaveInternet();
+
+    /**
+     * Do we have internet?
+     */
+    XBLAZE_DLL arc::Future<bool> doWeHaveInternet(const std::string& checkUrl);
 
     // Proper confirm popup
 
@@ -137,16 +148,6 @@ namespace xblazeapi {
      * Create a quick error notification (thread-safe)
      */
     XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
-
-    /**
-     * Do we have internet?
-     */
-    XBLAZE_DLL arc::Future<bool> doWeHaveInternet();
-
-    /**
-     * Do we have internet?
-     */
-    XBLAZE_DLL arc::Future<bool> doWeHaveInternet(const std::string& checkUrl);
 
     // Patreon's stuff
 
