@@ -20,10 +20,10 @@ namespace xblazeapi {
     arc::Future<bool> doWeHaveInternet(const std::string& url) {
         #ifdef GEODE_IS_MOBILE
             // I have no idea whether this is thread-safe or not, not risking it lol
-            auto res = co_await async::waitForMainThread([] {
+            auto check = co_await async::waitForMainThread([] {
                 return GameToolbox::doWeHaveInternet();
             });
-            return ret;
+            return check;
         #else
             auto check = co_await web::WebRequest()
                 .userAgent("GeometryDash/2.2081")
