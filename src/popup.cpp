@@ -69,4 +69,24 @@ namespace xblazeapi {
             }
         );
     }
+
+    void confirmYesNoSync(
+        std::string title,
+        std::string msg,
+        geode::Function<void()> yesCb,
+        geode::Function<void()> noCb
+    ) {
+        confirmYesNo(title, msg, std::move(yesCb), std::move(noCb));
+    }
+
+    void confirmYesNoSync(
+        std::string title,
+        std::string msg,
+        std::string yesBtn,
+        std::string noBtn,
+        geode::Function<void()> yesCb,
+        geode::Function<void()> noCb
+    ) {
+        confirmYesNo(title, msg, yesBtn, noBtn, std::move(yesCb), std::move(noCb));
+    }
 }

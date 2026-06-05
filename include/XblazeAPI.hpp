@@ -72,7 +72,7 @@ namespace xblazeapi {
 
     /**
      * Create a quick Yes/No popup.
-     * @warning The async version of confirmYesNo() is deprecated and will be removed in the future
+     * @warning The async version of confirmYesNo() is deprecated and will be removed in v2.1.0
      *
      * @param title The title for the popup
      * @param msg The message for the popup
@@ -82,7 +82,7 @@ namespace xblazeapi {
      * NOTE: This function will only properly work
      * inside a coroutine, for non-coroutines use `confirmYesNoSync`
      */
-    [[deprecated("The async version of confirmYesNo() is deprecated and will be removed in v2.1.0")]]
+    [[deprecated("The async version of 'confirmYesNo' is deprecated. This will be removed in v2.1.0")]]
     XBLAZE_DLL arc::Future<bool> confirmYesNo(
         std::string title,
         std::string msg,
@@ -124,6 +124,45 @@ namespace xblazeapi {
         geode::Function<void()> yesCb,
         geode::Function<void()> noCb = [] {},
         bool reverse = false
+    );
+
+    /**
+     * Create a quick Yes/No popup.
+     * This function is meant for when you're not in a coroutine.
+     * @warning `confirmYesNoSync` is deprecated and will be removed in v2.1.0. Please use `confirmYesNo` instead
+     *
+     * @param title The title for the popup
+     * @param msg The message for the popup
+     * @param yesCb The callback for when the user clicks "Yes"
+     * @param noCb The callback for when the user clicks "No"
+     */
+    [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
+    XBLAZE_DLL void confirmYesNoSync(
+        std::string title,
+        std::string msg,
+        geode::Function<void()> yesCb,
+        geode::Function<void()> noCb = [] {}
+    );
+
+    /**
+     * Create a quick Yes/No popup.
+     * This function is meant for when you're not in a coroutine.
+     * @warning `confirmYesNoSync` is deprecated and will be removed in v2.1.0. Please use `confirmYesNo` instead
+     *
+     * @param title The title for the popup
+     * @param msg The message for the popup
+     * @param yesBtn The text for the "Yes" button (obviously defaults to "Yes")
+     * @param noBtn The text for the "No" button (obviously defaults to "No")
+     * @param yesCb The callback for when the user clicks "Yes"
+     */
+    [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
+    XBLAZE_DLL void confirmYesNoSync(
+        std::string title,
+        std::string msg,
+        std::string yesBtn,
+        std::string noBtn,
+        geode::Function<void()> yesCb,
+        geode::Function<void()> noCb = [] {}
     );
 
     // Random stuff
