@@ -7,11 +7,11 @@
 #include <arc/future/Future.hpp>
 #include <matjson.hpp>
 
-#include <initializer_list>
 #include <string>
 #include <string_view>
 #include <unordered_map>
 #include <utility>
+#include <vector>
 
 #ifdef GEODE_IS_WINDOWS
     #ifdef XBLAZEAPI_EXPORTING
@@ -59,9 +59,9 @@ namespace xblazeapi {
         std::string sep = ":"
     );
 
-    // other web request stuff
+    // Other web request stuff
 
-    XBLAZE_DLL std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body);
+    XBLAZE_DLL std::string buildBodyString(std::vector<std::pair<std::string, std::string>> body);
 
     /**
      * Do we have internet?
