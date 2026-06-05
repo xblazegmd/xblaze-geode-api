@@ -33,16 +33,16 @@ namespace xblazeapi {
         co_return ret;
     }
 
-    void confirmYesNoSync(
+    void confirmYesNo(
         std::string title,
         std::string msg,
         geode::Function<void()> yesCb,
         geode::Function<void()> noCb
     ) {
-        confirmYesNoSync(title, msg, "Yes", "No", std::move(yesCb), std::move(noCb));
+        confirmYesNo(title, msg, "Yes", "No", std::move(yesCb), std::move(noCb));
     }
 
-    void confirmYesNoSync(
+    void confirmYesNo(
         std::string title,
         std::string msg,
         std::string yesBtn,

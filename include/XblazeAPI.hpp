@@ -72,6 +72,8 @@ namespace xblazeapi {
 
     /**
      * Create a quick Yes/No popup.
+     * @warning The async version of confirmYesNo() is deprecated and will be removed in the future
+     *
      * @param title The title for the popup
      * @param msg The message for the popup
      * @param yesBtn The text for the "Yes" button (obviously defaults to "Yes")
@@ -80,6 +82,7 @@ namespace xblazeapi {
      * NOTE: This function will only properly work
      * inside a coroutine, for non-coroutines use `confirmYesNoSync`
      */
+    [[deprecated("The async version of confirmYesNo() is deprecated and will be removed in v2.1.0")]]
     XBLAZE_DLL arc::Future<bool> confirmYesNo(
         std::string title,
         std::string msg,
@@ -89,15 +92,12 @@ namespace xblazeapi {
 
     /**
      * Create a quick Yes/No popup.
-     * This function is meant for when you're not in a coroutine
      * @param title The title for the popup
      * @param msg The message for the popup
      * @param yesCb The callback for when the user clicks "Yes"
      * @param noCb The callback for when the user clicks "No"
-     *
-     * NOTE: For coroutines use `confirmYesNo`
      */
-    XBLAZE_DLL void confirmYesNoSync(
+    XBLAZE_DLL void confirmYesNo(
         std::string title,
         std::string msg,
         geode::Function<void()> yesCb,
@@ -106,17 +106,14 @@ namespace xblazeapi {
 
     /**
      * Create a quick Yes/No popup.
-     * This function is meant for when you're not in a coroutine
      * @param title The title for the popup
      * @param msg The message for the popup
      * @param yesBtn The text for the "Yes" button (obviously defaults to "Yes")
      * @param noBtn The text for the "No" button (obviously defaults to "No")
      * @param yesCb The callback for when the user clicks "Yes"
      * @param noCb The callback for when the user clicks "No"
-     *
-     * NOTE: For coroutines use `confirmYesNo`
      */
-    XBLAZE_DLL void confirmYesNoSync(
+    XBLAZE_DLL void confirmYesNo(
         std::string title,
         std::string msg,
         std::string yesBtn,
