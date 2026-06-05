@@ -96,12 +96,14 @@ namespace xblazeapi {
      * @param msg The message for the popup
      * @param yesCb The callback for when the user clicks "Yes"
      * @param noCb The callback for when the user clicks "No"
+     * @param flip Reverse the Yes and No buttons
      */
     XBLAZE_DLL void confirmYesNo(
         std::string title,
         std::string msg,
         geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {}
+        geode::Function<void()> noCb = [] {},
+        bool reverse = false
     );
 
     /**
@@ -112,6 +114,7 @@ namespace xblazeapi {
      * @param noBtn The text for the "No" button (obviously defaults to "No")
      * @param yesCb The callback for when the user clicks "Yes"
      * @param noCb The callback for when the user clicks "No"
+     * @param flip Reverse the Yes and No buttons
      */
     XBLAZE_DLL void confirmYesNo(
         std::string title,
@@ -119,7 +122,8 @@ namespace xblazeapi {
         std::string yesBtn,
         std::string noBtn,
         geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {}
+        geode::Function<void()> noCb = [] {},
+        bool reverse = false
     );
 
     // Random stuff
