@@ -30,17 +30,18 @@ namespace xblazeapi {
     constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
     constexpr std::string_view SECRET = "Wmfd2893gb7";
 
+    using ServerResponse = geode::Result<std::string, int>;
+
     /**
      * Make a request to the Geometry Dash servers.
      * @param endpoint The endpoint the request will be sent to
      * @param body The request body
      * @return `Ok` if request was successful, `Err` if it failed
      *
-     * NOTE: `Err` returns an `int`. If it's negative it's an error code returned by the
-     * servers themselves, if it's a "xxx" like thing it's an HTTP status code, and if it's
-     * "571116" that means `res.string().isErr()` is true
+     * NOTE: The `Err` value is an integer that can either be an http error
+     * code ('xxx'), a gd server error (negative number) or 0 if anything else
      */
-    XBLAZE_DLL arc::Future<geode::Result<std::string, int>> requestGDServers(
+    XBLAZE_DLL arc::Future<ServerResponse> requestGDServers(
         std::string_view endpoint,
         std::string_view body,
         int timeout = 10

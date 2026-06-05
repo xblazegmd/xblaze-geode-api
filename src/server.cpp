@@ -9,7 +9,7 @@
 using namespace geode::prelude;
 
 namespace xblazeapi {
-    arc::Future<geode::Result<std::string, int>> requestGDServers(
+    arc::Future<ServerResponse> requestGDServers(
         std::string_view endpoint,
         std::string_view body,
         int timeout
@@ -27,7 +27,7 @@ namespace xblazeapi {
 
         if (res.string().isErr()) {
             log::error("Could not get response from endpoint '{}': {}", endpoint, res.string().unwrapErr());
-            co_return Err(571116);
+            co_return Err(0);
         }
 
         auto ret = res.string().unwrap();
