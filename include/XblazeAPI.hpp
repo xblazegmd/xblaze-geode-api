@@ -60,7 +60,7 @@ namespace xblazeapi {
         std::string sep = ":"
     );
 
-    // other web request stuff
+    // Other web request stuff
 
     XBLAZE_DLL std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body);
 
