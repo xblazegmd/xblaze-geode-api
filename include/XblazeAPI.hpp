@@ -28,8 +28,8 @@
 
 namespace xblazeapi {
     // gd server stuff
-    constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
-    constexpr std::string_view SECRET = "Wmfd2893gb7";
+    inline const std::string BOOMLINGS = "http://www.boomlings.com/database/";
+    inline const std::string SECRET = "Wmfd2893gb7";
 
     using ServerResponse = geode::Result<std::string, int>;
 
