@@ -31,12 +31,13 @@ namespace xblazeapi {
             log::error("Could not get response from endpoint '{}': {}", endpoint, res.string().unwrapErr());
             co_return Err(0);
         }
-        auto num = utils::numFromString<int>(ret.unwrap());
+        auto unwrapped = ret.unwrap();
+        auto num = utils::numFromString<int>(unwrapped));
         if (num.isOk() && num.unwrap() < 0) {
             co_return Err(num.unwrap());
         }
 
-        co_return Ok(ret);
+        co_return Ok(unwrapped);
     }
 
     std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string sep) {

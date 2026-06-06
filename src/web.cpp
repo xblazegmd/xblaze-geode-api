@@ -3,7 +3,6 @@
 #include <Geode/Geode.hpp>
 
 #include <initializer_list>
-#include <string>
 #include <utility>
 
 using namespace geode::prelude;
