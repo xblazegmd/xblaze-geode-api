@@ -253,7 +253,7 @@ namespace xblazeapi {
     /**
      * The tier that the user has on XblazeGMD's Patreon
      */
-    enum class XBLAZE_DLL PatreonSupporterTier {
+    enum class [[deprecated("All patreon related APIs will be removed in v2.1.0")]] XBLAZE_DLL PatreonSupporterTier {
         None = 0,
         PlainNormalSupporter = 1,
         AmazingBeautifulCrab = 2
@@ -262,21 +262,25 @@ namespace xblazeapi {
     /**
      * Check if the current user is supporting XblazeGMD on Patreon
      */
+    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
     XBLAZE_DLL PatreonSupporterTier patreonSupporterStatus(int accountID);
 
     /**
      * Check if the user has any tier on XblazeGMD's Patreon.
      * This will only return `true` if the user is on a paid tier
      */
+    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
     XBLAZE_DLL inline bool isPatreonSupporter(int accountID);
 
     /**
      * Check if the user has the 'Plain Normal Supporter Tier' on XblazeGMD's Patreon
      */
+    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
     XBLAZE_DLL inline bool isPatreonPlainNormalSupporter(int accountID);
 
     /**
      * Check if the user has the 'Amazing Beautiful Crab Tier' on XblazeGMD's Patreon
      */
+    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
     XBLAZE_DLL inline bool isPatreonAmazingBeautifulCrab(int accountID);
 }
