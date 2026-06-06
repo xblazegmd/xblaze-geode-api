@@ -27,13 +27,5 @@
 		"include": [
 			"include/*.hpp"
 		]
-	},
-	"settings": {
-		"supporter-badge": {
-			"type": "bool",
-			"name": "Show Supporter Badges",
-			"description": "Whether to show a supporter badge on a player's profile if they've supported XblazeGMD on his Patreon",
-			"default": true
-		}
 	}
 }
