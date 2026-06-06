@@ -74,17 +74,8 @@ xblazeapi::buildBodyString({
 Have you ever wanted to just have an easier way to make a simple "Yes/No" popup? Sure, `geode::createQuickPopup` is good enough, but what abt a more *convenient* way?
 ```cpp
 // Yes/No
-auto res = co_await xblazeapi::confirmYesNo("Title", "Message");
-
-// Confirm/Cancel
-auto res = co_await xblazeapi::confirmYesNo("Title", "Message", "Confirm", "Cancel");
-```
-
-This function is meant to be called inside a coroutine (thread-safe too!). If you are not inside one, you can use the `confirmYesNoSync` function
-```cpp
-auto res = xblazeapi::confirmYesNoSync(
-    "Title",
-    "Message",
+auto res = xblazeapi::confirmYesNo(
+    "Title", "Message",
     [] {
         // Callback if user clicked "Yes"
     },
@@ -92,6 +83,48 @@ auto res = xblazeapi::confirmYesNoSync(
         // Callback if user clicked "No"
     }
 );
+
+// Confirm/Cancel
+auto res = xblazeapi::confirmYesNo(
+    "Title", "Message",
+    "Confirm", "Cancel",
+    [] { /* yes* */ }, [] { /* no */ }
+);
+```
+
+The buttons will by default show up as "No, Yes" with yes being the second button. You can reverse this by calling the function like this
+```cpp
+auto res = xblazeapi::confirmYesNo(
+    "Title", "Message",
+    [] { /* yes* */ }, [] { /* no */ },
+    true // reverse
+);
+```
+
+### Quick Notifications
+Geode's `Notification` is very useful for showing status updates for whatever you need to the user. By default to make a notification you define it like:
+```cpp
+Notification::create("Contents", NotificationIcon::Info)->show();
+```
+
+That is a ton of code. So I made a few utility functions to help with this
+```cpp
+xblazeapi::quickInfoNotification("Information"); // NotificationIcon::Info
+xblazeapi::quickWarningNotification("Beware!"); // NotificationIcon::Warning
+xblazeapi::quickErrorNotification("Oh no!"); // NotificationIcon::Error
+xblazeapi::quickSuccessNotification("We did it!"); // NotificationIcon::Sucess
+xblazeapi::quickLoadingNotification("Loading..."); // NotificationIcon::Loading
+xblazeapi::quickNotification("No icon!"); // NotificationIcon::None
+```
+
+The functions listed above are not thread-safe, i.e. this would crash:
+```cpp
+async::spawn(xblazeapi::quickNotification("Risky")); // Crash!
+```
+
+If you *really* need to show the notification on a separate thread you can use the thread-safe version of the utilities:
+```cpp
+async::spawn(xblazeapi::quickNotificationTS("thread-safe! (no not this s**t)"));
 ```
 
 ### Random stuff
@@ -100,17 +133,6 @@ auto res = xblazeapi::confirmYesNoSync(
 co_await xblazeapi::sleepSecs(10);
 co_await xblazeapi::sleepMillis(100);
 
-// Quick error notifications
-xblazeapi::quickErrorNotification("Oops!");
-xblazeapi::quickErrorNotificationTS("Thread-safe!");
-
 // GEODE_UNWRAP_INTO but for futures
 XBLAZE_UNWRAP_INTO_FUTURE(int var, riskyFunction());
 ```
-
-### Patreon stuff
-I'll be honest, the main reason I made this utils mod is so I could have a nice way all of my mods could show some nice badges to my patrons lol
-
-There is *some* utils to get a patron's subscription status on my Patreon, but those are mainly for my mods and not meant for anyone else to use, so I won't document them here
-
-If you have joined my Patreon, you can claim a nice supporter badge by linking your Patreon account [here](https://xblaze.netlify.app/patreon/link)
