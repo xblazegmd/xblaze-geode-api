@@ -1,7 +1,7 @@
 # Xblaze's Geode API
 ## 2.0.0
 - Remove Patreon badges and deprecate Patreon APIs (no one's even a member on my patreon so it's useless)
-- Use `std::vector` instead of `std::initializer_list` for `buildBodyString`
+- Make `xblazeapi::BOOMLINGS` and `xblazeapi::SECRET` `std::string` instead of `std::string_view`
 - Make `confirmYesNo` synchronous and deprecate async `confirmYesNo` and `confirmYesNoSync`
 - Add "reverse" option in `confirmYesNo`
 - Add more quick notification utils
