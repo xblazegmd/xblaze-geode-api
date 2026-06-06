@@ -5,6 +5,7 @@
 - Make `confirmYesNo` synchronous and deprecate async `confirmYesNo` and `confirmYesNoSync`
 - Add "reverse" option in `confirmYesNo`
 - Add more quick notification utils
+- Small change in return type for `requestGDServers`
 
 ## 1.2.0
 - Change badge fetching system to one that doesn't overwhelm my website (lol)
