@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Geode/Result.hpp>
+#include <Geode/ui/Notification.hpp>
 #include <Geode/utils/async.hpp>
 #include <Geode/utils/web.hpp>
 
@@ -165,6 +166,76 @@ namespace xblazeapi {
         geode::Function<void()> noCb = [] {}
     );
 
+    // Notifications
+
+    /**
+     * Create a quick notification
+     * @warning Not thread-safe, for async use cases use `quickNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickNotification(const std::string& msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
+
+    /**
+     * Create a quick info notification
+     * @warning Not thread-safe, for async use cases use `quickInfoNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickInfoNotification(const std::string& msg);
+
+    /**
+     * Create a quick warning notification
+     * @warning Not thread-safe, for async use cases use `quickWarningNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickWarningNotification(const std::string& msg);
+
+    /**
+     * Create a quick error notification
+     * @warning Not thread-safe, for async use cases use `quickErrorNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickErrorNotification(const std::string& msg);
+
+    /**
+     * Create a quick success notification
+     * @warning Not thread-safe, for async use cases use `quickSuccessNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickSuccessNotification(const std::string& msg);
+
+    /**
+     * Create a quick loading notification
+     * @warning Not thread-safe, for async use cases use `quickLoadingNotificationTS` instead
+     */
+    XBLAZE_DLL geode::Notification* quickLoadingNotification(const std::string& msg);
+
+    // Notifications (thread-safe)
+
+    /**
+     * Create a quick notification (thread-salfe)
+     */
+    XBLAZE_DLL void quickNotificationTS(const std::string& msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
+
+    /**
+     * Create a quick info notification (thread-safe)
+     */
+    XBLAZE_DLL void quickInfoNotificationTS(const std::string& msg);
+
+    /**
+     * Create a quick warning notification (thread-safe)
+     */
+    XBLAZE_DLL void quickWarningNotificationTS(const std::string& msg);
+
+    /**
+     * Create a quick error notification (thread-safe)
+     */
+    XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
+
+    /**
+     * Create a quick success notification (thread-safe)
+     */
+    XBLAZE_DLL void quickSuccessNotificationTS(const std::string& msg);
+
+    /**
+     * Create a quick loading notification (thread-safe)
+     */
+    XBLAZE_DLL void quickLoadingNotificationTS(const std::string& msg);
+
     // Random stuff
 
     /**
@@ -176,16 +247,6 @@ namespace xblazeapi {
      * Sleep for __ milliseconds
      */
     XBLAZE_DLL arc::Future<> sleepMillis(int m);
-
-    /**
-     * Create a quick error notification (not thread-safe, use `quickErrorNotificationTS` instead)
-     */
-    XBLAZE_DLL geode::Notification* quickErrorNotification(const std::string& msg);
-
-    /**
-     * Create a quick error notification (thread-safe)
-     */
-    XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
 
     // Patreon's stuff
 
