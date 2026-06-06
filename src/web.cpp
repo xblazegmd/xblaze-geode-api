@@ -12,7 +12,7 @@ namespace xblazeapi {
         fmt::memory_buffer out;
 
         for (const auto& [k, v] : body)
-            fmt::format_to(std::back_inserter(out), "{}={}&", k, v);
+            fmt::format_to(std::back_inserter(out), FMT_COMPILE("{}={}&"), k, v);
 
         return fmt::to_string(out);
     }
