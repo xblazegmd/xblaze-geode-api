@@ -32,7 +32,7 @@ namespace xblazeapi {
             co_return Err(0);
         }
         auto unwrapped = ret.unwrap();
-        auto num = utils::numFromString<int>(unwrapped));
+        auto num = utils::numFromString<int>(unwrapped);
         if (num.isOk() && num.unwrap() < 0) {
             co_return Err(num.unwrap());
         }
