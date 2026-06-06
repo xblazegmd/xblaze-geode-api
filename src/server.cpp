@@ -28,7 +28,7 @@ namespace xblazeapi {
         auto ret = res.string();
 
         if (ret.isErr()) {
-            log::error("Could not get response from endpoint '{}': {}", endpoint, res.string().unwrapErr());
+            log::error("Could not get response from endpoint '{}': {}", endpoint, ret.unwrapErr());
             co_return Err(0);
         }
         auto unwrapped = ret.unwrap();
