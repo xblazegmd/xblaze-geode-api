@@ -46,6 +46,7 @@ $execute {
 
 namespace xblazeapi {
     PatreonSupporterTier patreonSupporterStatus(int accountID) {
+        log::warn("All patreon related APIs are deprecated and will be removed in v2.1.0");
         for (auto& member : members) {
             if (member["accountID"] != utils::numToString(accountID)) continue;
             auto tier = member["tier"];
@@ -61,14 +62,17 @@ namespace xblazeapi {
     }
 
     inline bool isPatreonSupporter(int accountID) {
+        log::warn("All patreon related APIs are deprecated and will be removed in v2.1.0");
         return patreonSupporterStatus(accountID) != PatreonSupporterTier::None;
     }
 
     inline bool isPatreonPlainNormalSupporter(int accountID) {
+        log::warn("All patreon related APIs are deprecated and will be removed in v2.1.0");
         return patreonSupporterStatus(accountID) == PatreonSupporterTier::PlainNormalSupporter;
     }
 
     inline bool isPatreonAmazingBeautifulCrab(int accountID) {
+        log::warn("All patreon related APIs are deprecated and will be removed in v2.1.0");
         return patreonSupporterStatus(accountID) == PatreonSupporterTier::AmazingBeautifulCrab;
     }
 }

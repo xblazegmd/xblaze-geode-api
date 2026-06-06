@@ -14,6 +14,7 @@ namespace xblazeapi {
         std::string yesBtn,
         std::string noBtn
     ) {
+        log::warn("The async version of 'confirmYesNo' is deprecated. This will be removed in v2.1.0");
         bool ret = false;
         arc::Notify notify;
 
@@ -76,6 +77,7 @@ namespace xblazeapi {
         geode::Function<void()> yesCb,
         geode::Function<void()> noCb
     ) {
+        log::warn("confirmYesNoSync is deprecated. Please use 'confirmYesNo' instead. This will be removed in v2.1.0");
         confirmYesNo(title, msg, std::move(yesCb), std::move(noCb));
     }
 
@@ -87,6 +89,7 @@ namespace xblazeapi {
         geode::Function<void()> yesCb,
         geode::Function<void()> noCb
     ) {
+        log::warn("confirmYesNoSync is deprecated. Please use 'confirmYesNo' instead. This will be removed in v2.1.0");
         confirmYesNo(title, msg, yesBtn, noBtn, std::move(yesCb), std::move(noCb));
     }
 }
