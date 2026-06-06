@@ -28,10 +28,11 @@
 
 namespace xblazeapi {
     // gd server stuff
-    inline const std::string BOOMLINGS = "http://www.boomlings.com/database/";
+    inline const std::string BOOMLINGS = "https://www.boomlings.com/database/";
     inline const std::string SECRET = "Wmfd2893gb7";
 
     using ServerResponse = geode::Result<std::string, int>;
+    using VoidCallback = geode::Function<void()>;
 
     /**
      * Make a request to the Geometry Dash servers.
@@ -85,10 +86,10 @@ namespace xblazeapi {
      */
     [[deprecated("The async version of 'confirmYesNo' is deprecated. This will be removed in v2.1.0")]]
     XBLAZE_DLL arc::Future<bool> confirmYesNo(
-        std::string title,
-        std::string msg,
-        std::string yesBtn = "Yes",
-        std::string noBtn = "No"
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn = "Yes",
+        geode::ZStringView noBtn = "No"
     );
 
     /**
@@ -100,10 +101,10 @@ namespace xblazeapi {
      * @param flip Reverse the Yes and No buttons
      */
     XBLAZE_DLL void confirmYesNo(
-        std::string title,
-        std::string msg,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {},
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        VoidCallback yesCb,
+        VoidCallback noCb = [] {},
         bool reverse = false
     );
 
@@ -118,12 +119,12 @@ namespace xblazeapi {
      * @param flip Reverse the Yes and No buttons
      */
     XBLAZE_DLL void confirmYesNo(
-        std::string title,
-        std::string msg,
-        std::string yesBtn,
-        std::string noBtn,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {},
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn,
+        geode::ZStringView noBtn,
+        VoidCallback yesCb,
+        VoidCallback noCb = [] {},
         bool reverse = false
     );
 
@@ -139,10 +140,10 @@ namespace xblazeapi {
      */
     [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
     XBLAZE_DLL void confirmYesNoSync(
-        std::string title,
-        std::string msg,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {}
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        VoidCallback yesCb,
+        VoidCallback noCb = [] {}
     );
 
     /**
@@ -158,12 +159,12 @@ namespace xblazeapi {
      */
     [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
     XBLAZE_DLL void confirmYesNoSync(
-        std::string title,
-        std::string msg,
-        std::string yesBtn,
-        std::string noBtn,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb = [] {}
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn,
+        geode::ZStringView noBtn,
+        VoidCallback yesCb,
+        VoidCallback noCb = [] {}
     );
 
     // Notifications
@@ -172,69 +173,69 @@ namespace xblazeapi {
      * Create a quick notification
      * @warning Not thread-safe, for async use cases use `quickNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickNotification(const std::string& msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
+    XBLAZE_DLL geode::Notification* quickNotification(geode::ZStringView msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
 
     /**
      * Create a quick info notification
      * @warning Not thread-safe, for async use cases use `quickInfoNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickInfoNotification(const std::string& msg);
+    XBLAZE_DLL geode::Notification* quickInfoNotification(geode::ZStringView msg);
 
     /**
      * Create a quick warning notification
      * @warning Not thread-safe, for async use cases use `quickWarningNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickWarningNotification(const std::string& msg);
+    XBLAZE_DLL geode::Notification* quickWarningNotification(geode::ZStringView msg);
 
     /**
      * Create a quick error notification
      * @warning Not thread-safe, for async use cases use `quickErrorNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickErrorNotification(const std::string& msg);
+    XBLAZE_DLL geode::Notification* quickErrorNotification(geode::ZStringView msg);
 
     /**
      * Create a quick success notification
      * @warning Not thread-safe, for async use cases use `quickSuccessNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickSuccessNotification(const std::string& msg);
+    XBLAZE_DLL geode::Notification* quickSuccessNotification(geode::ZStringView msg);
 
     /**
      * Create a quick loading notification
      * @warning Not thread-safe, for async use cases use `quickLoadingNotificationTS` instead
      */
-    XBLAZE_DLL geode::Notification* quickLoadingNotification(const std::string& msg);
+    XBLAZE_DLL geode::Notification* quickLoadingNotification(geode::ZStringView msg);
 
     // Notifications (thread-safe)
 
     /**
      * Create a quick notification (thread-salfe)
      */
-    XBLAZE_DLL void quickNotificationTS(const std::string& msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
+    XBLAZE_DLL void quickNotificationTS(geode::ZStringView msg, geode::NotificationIcon icon = geode::NotificationIcon::None);
 
     /**
      * Create a quick info notification (thread-safe)
      */
-    XBLAZE_DLL void quickInfoNotificationTS(const std::string& msg);
+    XBLAZE_DLL void quickInfoNotificationTS(geode::ZStringView msg);
 
     /**
      * Create a quick warning notification (thread-safe)
      */
-    XBLAZE_DLL void quickWarningNotificationTS(const std::string& msg);
+    XBLAZE_DLL void quickWarningNotificationTS(geode::ZStringView msg);
 
     /**
      * Create a quick error notification (thread-safe)
      */
-    XBLAZE_DLL void quickErrorNotificationTS(const std::string& msg);
+    XBLAZE_DLL void quickErrorNotificationTS(geode::ZStringView msg);
 
     /**
      * Create a quick success notification (thread-safe)
      */
-    XBLAZE_DLL void quickSuccessNotificationTS(const std::string& msg);
+    XBLAZE_DLL void quickSuccessNotificationTS(geode::ZStringView msg);
 
     /**
      * Create a quick loading notification (thread-safe)
      */
-    XBLAZE_DLL void quickLoadingNotificationTS(const std::string& msg);
+    XBLAZE_DLL void quickLoadingNotificationTS(geode::ZStringView msg);
 
     // Random stuff
 

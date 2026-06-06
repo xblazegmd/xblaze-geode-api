@@ -25,13 +25,13 @@ namespace xblazeapi {
             co_return Err(res.code());
         }
 
-        if (res.string().isErr()) {
+        auto ret = res.string();
+
+        if (ret.isErr()) {
             log::error("Could not get response from endpoint '{}': {}", endpoint, res.string().unwrapErr());
             co_return Err(0);
         }
-
-        auto ret = res.string().unwrap();
-        auto num = utils::numFromString<int>(ret);
+        auto num = utils::numFromString<int>(ret.unwrap());
         if (num.isOk() && num.unwrap() < 0) {
             co_return Err(num.unwrap());
         }
