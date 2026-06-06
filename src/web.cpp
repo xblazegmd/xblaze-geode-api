@@ -14,7 +14,7 @@ namespace xblazeapi {
         for (const auto& [k, v] : body)
             fmt::format_to(std::back_inserter(out), "{}={}&", k, v);
 
-        return fmt::to_string(out.data());
+        return fmt::to_string(out);
     }
 
     arc::Future<bool> doWeHaveInternet(const std::string& url) {
