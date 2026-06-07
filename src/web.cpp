@@ -1,6 +1,7 @@
 #include <XblazeAPI.hpp>
 
 #include <Geode/Geode.hpp>
+#include <fmt/compile.h>
 
 #include <initializer_list>
 #include <utility>
@@ -13,6 +14,8 @@ namespace xblazeapi {
 
         for (const auto& [k, v] : body)
             fmt::format_to(std::back_inserter(out), FMT_COMPILE("{}={}&"), k, v);
+
+        out.resize(out.size() - 1);
 
         return fmt::to_string(out);
     }
