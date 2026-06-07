@@ -9,10 +9,10 @@ using namespace geode::prelude;
 
 namespace xblazeapi {
     arc::Future<bool> confirmYesNo(
-        std::string title,
-        std::string msg,
-        std::string yesBtn,
-        std::string noBtn
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn,
+        geode::ZStringView noBtn
     ) {
         log::warn("The async version of 'confirmYesNo' is deprecated. This will be removed in v2.1.0");
         bool ret = false;
@@ -35,26 +35,30 @@ namespace xblazeapi {
     }
 
     void confirmYesNo(
-        std::string title,
-        std::string msg,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb,
+        geode::ZStringView title,
+        geode::ZStringView msg,
+
+        VoidCallback yesCb,
+        VoidCallback noCb,
+
         bool reverse
     ) {
         confirmYesNo(title, msg, "Yes", "No", std::move(yesCb), std::move(noCb), reverse);
     }
 
     void confirmYesNo(
-        std::string title,
-        std::string msg,
-        std::string yesBtn,
-        std::string noBtn,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb,
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn,
+        geode::ZStringView noBtn,
+
+        VoidCallback yesCb,
+        VoidCallback noCb,
+
         bool reverse
     ) {
-        std::string btn1 = reverse ? std::move(yesBtn) : std::move(noBtn);
-        std::string btn2 = reverse ? std::move(noBtn) : std::move(yesBtn);
+        geode::ZStringView btn1 = reverse ? std::move(yesBtn) : std::move(noBtn);
+        geode::ZStringView btn2 = reverse ? std::move(noBtn) : std::move(yesBtn);
 
         geode::createQuickPopup(
             title.c_str(),
@@ -72,22 +76,24 @@ namespace xblazeapi {
     }
 
     void confirmYesNoSync(
-        std::string title,
-        std::string msg,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        
+        VoidCallback yesCb,
+        VoidCallback noCb
     ) {
         log::warn("confirmYesNoSync is deprecated. Please use 'confirmYesNo' instead. This will be removed in v2.1.0");
         confirmYesNo(title, msg, std::move(yesCb), std::move(noCb));
     }
 
     void confirmYesNoSync(
-        std::string title,
-        std::string msg,
-        std::string yesBtn,
-        std::string noBtn,
-        geode::Function<void()> yesCb,
-        geode::Function<void()> noCb
+        geode::ZStringView title,
+        geode::ZStringView msg,
+        geode::ZStringView yesBtn,
+        geode::ZStringView noBtn,
+
+        VoidCallback yesCb,
+        VoidCallback noCb
     ) {
         log::warn("confirmYesNoSync is deprecated. Please use 'confirmYesNo' instead. This will be removed in v2.1.0");
         confirmYesNo(title, msg, yesBtn, noBtn, std::move(yesCb), std::move(noCb));

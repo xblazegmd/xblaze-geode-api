@@ -25,18 +25,19 @@ namespace xblazeapi {
             co_return Err(res.code());
         }
 
-        if (res.string().isErr()) {
-            log::error("Could not get response from endpoint '{}': {}", endpoint, res.string().unwrapErr());
+        auto ret = res.string();
+
+        if (ret.isErr()) {
+            log::error("Could not get response from endpoint '{}': {}", endpoint, ret.unwrapErr());
             co_return Err(0);
         }
-
-        auto ret = res.string().unwrap();
-        auto num = utils::numFromString<int>(ret);
+        auto unwrapped = ret.unwrap();
+        auto num = utils::numFromString<int>(unwrapped);
         if (num.isOk() && num.unwrap() < 0) {
             co_return Err(num.unwrap());
         }
 
-        co_return Ok(ret);
+        co_return Ok(unwrapped);
     }
 
     std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string sep) {

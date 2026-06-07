@@ -1,20 +1,23 @@
 #include <XblazeAPI.hpp>
 
 #include <Geode/Geode.hpp>
+#include <fmt/compile.h>
 
 #include <initializer_list>
-#include <string>
 #include <utility>
 
 using namespace geode::prelude;
 
 namespace xblazeapi {
     std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body) {
-        std::vector<std::string> ret;
-        for (const auto& [k, v] : body) {
-            ret.push_back(fmt::format("{}={}", k, v));
-        }
-        return string::join(ret, "&");
+        fmt::memory_buffer out;
+
+        for (const auto& [k, v] : body)
+            fmt::format_to(std::back_inserter(out), FMT_COMPILE("{}={}&"), k, v);
+
+        out.resize(out.size() - 1);
+
+        return fmt::to_string(out);
     }
 
     arc::Future<bool> doWeHaveInternet(const std::string& url) {
