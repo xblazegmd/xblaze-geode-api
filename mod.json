@@ -8,12 +8,9 @@
 	},
 	"id": "xblazegmd.geode-api",
 	"name": "Xblaze's Geode API",
-	"version": "v2.0.0",
+	"version": "v2.1.0",
 	"developer": "XblazeGMD",
 	"description": "Bunch of utils for my mods",
-	"dependencies": {
-		"geode.node-ids": ">=v1.23.3"
-	},
 	"links": {
 		"homepage": "https://xblaze.netlify.app",
 		"source": "https://github.com/xblazegmd/xblaze-geode-api"

@@ -21,10 +21,10 @@ This API adds a bunch of utilities to make working with the GD servers less of a
 First there's some variables defined that contain data you may find useful
 ```cpp
 // URL to the GD servers (keep in mind it ends with "/")
-constexpr std::string_view BOOMLINGS = "http://www.boomlings.com/database/";
+inline const std::string BOOMLINGS = "http://www.boomlings.com/database/";
 
 // The common secret
-constexpr std::string_view SECRET = "Wmfd2893gb7";
+inline const std::string SECRET = "Wmfd2893gb7";
 ```
 
 There's also this nice function to make a request to the GD servers:
