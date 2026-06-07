@@ -12,7 +12,7 @@
 	"developer": "XblazeGMD",
 	"description": "Bunch of utils for my mods",
 	"dependencies": {
-		"geode.node-ids": ">=v1.20.0"
+		"geode.node-ids": ">=v1.23.3"
 	},
 	"links": {
 		"homepage": "https://xblaze.netlify.app",
