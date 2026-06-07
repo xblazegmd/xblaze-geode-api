@@ -1,8 +1,8 @@
 #include <XblazeAPI.hpp>
 
 #include <Geode/Geode.hpp>
+#include <asp/iter/Split.hpp>
 
-#include <string>
 #include <string_view>
 #include <unordered_map>
 
@@ -40,15 +40,10 @@ namespace xblazeapi {
         co_return Ok(unwrapped);
     }
 
-    std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string sep) {
-        auto pieces = string::split(response, sep);
-        std::unordered_map<std::string, std::string> ret;
-        ret.reserve(pieces.size() / 2);
-
-        for (size_t i = 0; i < pieces.size(); i += 2) {
-            ret.emplace(pieces[i], pieces[i + 1]);
-        }
-
-        return ret;
+    std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string_view sep) {
+        auto split = asp::iter::split(response, sep).arrayChunks<2>();
+        auto map = std::unordered_map(split.begin(), split.end());
+        geode::log::info(map);
+        return map;
     }
 }

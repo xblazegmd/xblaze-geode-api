@@ -58,7 +58,7 @@ namespace xblazeapi {
      */
     XBLAZE_DLL std::unordered_map<std::string, std::string> formatResponse(
         std::string_view response,
-        std::string sep = ":"
+        std::string_view sep = ":"
     );
 
     // Other web request stuff
