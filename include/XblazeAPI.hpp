@@ -58,11 +58,6 @@ namespace xblazeapi {
      */
     XBLAZE_DLL std::unordered_map<std::string, std::string> formatResponse(
         std::string_view response,
-        char sep = ':'
-    );
-
-    XBLAZE_DLL std::unordered_map<std::string, std::string> formatResponse(
-        std::string_view response,
         std::string_view sep = ":"
     );
 
