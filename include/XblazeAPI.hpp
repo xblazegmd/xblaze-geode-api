@@ -108,6 +108,8 @@ namespace xblazeapi {
         bool reverse = false
     );
 
+    // Notifications
+
     /**
      * Create a quick notification
      * @warning Not thread-safe, for async use cases use `quickNotificationTS` instead
