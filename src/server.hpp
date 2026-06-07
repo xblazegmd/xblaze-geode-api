@@ -42,8 +42,6 @@ namespace xblazeapi {
 
     std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string_view sep) {
         auto split = asp::iter::split(response, sep).arrayChunks<2>();
-        auto map = std::unordered_map<std::string, std::string>(split.begin(), split.end());
-        geode::log::info("{}", map);
-        return map;
+        return std::unordered_map<std::string, std::string>(split.begin(), split.end());
     }
 }
