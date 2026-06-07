@@ -43,9 +43,10 @@ namespace xblazeapi {
     std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string sep) {
         auto pieces = string::split(response, sep);
         std::unordered_map<std::string, std::string> ret;
+        ret.reserve(pieces.size() / 2);
 
-        for (int i = 0; i < pieces.size(); i += 2) {
-            ret[pieces[i]] = pieces[i + 1];
+        for (size_t i = 0; i < pieces.size(); i += 2) {
+            ret.emplace(pieces[i], pieces[i + 1]);
         }
 
         return ret;
