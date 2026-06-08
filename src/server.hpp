@@ -49,21 +49,17 @@ namespace xblazeapi {
             const size_t keyPos = response.find(sep, pos);
             if (keyPos == response.npos) break;
 
-            size_t valPos = response.find(sep, keyPos + 1);
+            const size_t valOff = keyPos + 1;
+            size_t valPos = response.find(sep, valOff);
             if (valPos == response.npos) valPos = response.size();
 
             std::string_view key = response.substr(pos, keyPos - pos);
-            std::string_view val = response.substr(keyPos + 1, valPos - (keyPos + 1));
+            std::string_view val = response.substr(valOff, valPos - valOff);
             
-            map.insert({ key, val });
+            map.emplace(key, val);
             pos = valPos + 1;
         }
 
         return map;
-    }
-
-    std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string_view sep) {
-        auto split = asp::iter::split(response, sep).arrayChunks<2>();
-        return std::unordered_map<std::string, std::string>(split.begin(), split.end());
     }
 }
