@@ -61,6 +61,11 @@ namespace xblazeapi {
         std::string_view sep = ":"
     );
 
+    XBLAZE_DLL std::unordered_map<std::string, std::string> formatResponse(
+        std::string_view response,
+        char sep = ':'
+    );
+
     // Other web request stuff
 
     XBLAZE_DLL std::string buildBodyString(std::initializer_list<std::pair<std::string, std::string>> body);
