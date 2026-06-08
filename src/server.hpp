@@ -45,8 +45,10 @@ namespace xblazeapi {
         map.reserve(static_cast<size_t>(std::count(response.begin(), response.end(), sep) * 2));
 
         size_t pos = 0;
-        while (pos != response.npos) {
+        while (true) {
             const size_t keyPos = response.find(sep, pos);
+            if (keyPos == response.npos) break;
+
             std::string_view key = response.substr(pos, keyPos - pos);
 
             const size_t valPos = response.find(sep, keyPos + 1);
