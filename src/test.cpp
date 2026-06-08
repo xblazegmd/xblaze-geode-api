@@ -3,6 +3,8 @@
 #include <Geode/Geode.hpp>
 #include <asp/time/Instant.hpp>
 
+#include "server.hpp"
+
 $on_game(Loaded) {
     auto now = asp::time::Instant::now();
     for (size_t i = 0; i < 1000; i++) {
