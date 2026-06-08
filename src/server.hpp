@@ -49,9 +49,10 @@ namespace xblazeapi {
             const size_t keyPos = response.find(sep, pos);
             if (keyPos == response.npos) break;
 
-            std::string_view key = response.substr(pos, keyPos - pos);
+            size_t valPos = response.find(sep, keyPos + 1);
+            if (valPos == response.npos) valPos = response.size();
 
-            const size_t valPos = response.find(sep, keyPos + 1);
+            std::string_view key = response.substr(pos, keyPos - pos);
             std::string_view val = response.substr(keyPos + 1, valPos - (keyPos + 1));
             
             map.emplace(key, val);
