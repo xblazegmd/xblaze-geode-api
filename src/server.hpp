@@ -40,11 +40,6 @@ namespace xblazeapi {
         co_return Ok(unwrapped);
     }
 
-    std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string_view sep) {
-        auto split = asp::iter::split(response, sep).arrayChunks<2>();
-        return std::unordered_map<std::string, std::string>(split.begin(), split.end());
-    }
-
     std::unordered_map<std::string, std::string> formatResponse(std::string_view response, char sep) {
         std::unordered_map<std::string, std::string> map;
         map.reserve(static_cast<size_t>(std::count(response.begin(), response.end(), sep) * 2));
@@ -58,8 +53,14 @@ namespace xblazeapi {
             std::string_view val = response.substr(start, valPos - (keyPos + 1));
             
             pos = keyPos + valPos + 2;
+            map.emplace(key, val);
         }
 
         return map;
+    }
+
+    std::unordered_map<std::string, std::string> formatResponse(std::string_view response, std::string_view sep) {
+        auto split = asp::iter::split(response, sep).arrayChunks<2>();
+        return std::unordered_map<std::string, std::string>(split.begin(), split.end());
     }
 }
