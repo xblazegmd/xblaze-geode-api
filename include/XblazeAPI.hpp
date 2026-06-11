@@ -74,26 +74,6 @@ namespace xblazeapi {
 
     /**
      * Create a quick Yes/No popup.
-     * @warning The async version of confirmYesNo() is deprecated and will be removed in v2.1.0
-     *
-     * @param title The title for the popup
-     * @param msg The message for the popup
-     * @param yesBtn The text for the "Yes" button (obviously defaults to "Yes")
-     * @param noBtn The text for the "No" button (obviously defaults to "No")
-     *
-     * NOTE: This function will only properly work
-     * inside a coroutine, for non-coroutines use `confirmYesNoSync`
-     */
-    [[deprecated("The async version of 'confirmYesNo' is deprecated. This will be removed in v2.1.0")]]
-    XBLAZE_DLL arc::Future<bool> confirmYesNo(
-        geode::ZStringView title,
-        geode::ZStringView msg,
-        geode::ZStringView yesBtn = "Yes",
-        geode::ZStringView noBtn = "No"
-    );
-
-    /**
-     * Create a quick Yes/No popup.
      * @param title The title for the popup
      * @param msg The message for the popup
      * @param yesCb The callback for when the user clicks "Yes"
@@ -128,44 +108,6 @@ namespace xblazeapi {
         bool reverse = false
     );
 
-    /**
-     * Create a quick Yes/No popup.
-     * This function is meant for when you're not in a coroutine.
-     * @warning `confirmYesNoSync` is deprecated and will be removed in v2.1.0. Please use `confirmYesNo` instead
-     *
-     * @param title The title for the popup
-     * @param msg The message for the popup
-     * @param yesCb The callback for when the user clicks "Yes"
-     * @param noCb The callback for when the user clicks "No"
-     */
-    [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
-    XBLAZE_DLL void confirmYesNoSync(
-        geode::ZStringView title,
-        geode::ZStringView msg,
-        VoidCallback yesCb,
-        VoidCallback noCb = [] {}
-    );
-
-    /**
-     * Create a quick Yes/No popup.
-     * This function is meant for when you're not in a coroutine.
-     * @warning `confirmYesNoSync` is deprecated and will be removed in v2.1.0. Please use `confirmYesNo` instead
-     *
-     * @param title The title for the popup
-     * @param msg The message for the popup
-     * @param yesBtn The text for the "Yes" button (obviously defaults to "Yes")
-     * @param noBtn The text for the "No" button (obviously defaults to "No")
-     * @param yesCb The callback for when the user clicks "Yes"
-     */
-    [[deprecated("Please use 'confirmYesNo' instead. This will be removed in v2.1.0")]]
-    XBLAZE_DLL void confirmYesNoSync(
-        geode::ZStringView title,
-        geode::ZStringView msg,
-        geode::ZStringView yesBtn,
-        geode::ZStringView noBtn,
-        VoidCallback yesCb,
-        VoidCallback noCb = [] {}
-    );
 
     // Notifications
 
@@ -248,40 +190,4 @@ namespace xblazeapi {
      * Sleep for __ milliseconds
      */
     XBLAZE_DLL arc::Future<> sleepMillis(int m);
-
-    // Patreon's stuff
-
-    /**
-     * The tier that the user has on XblazeGMD's Patreon
-     */
-    enum class [[deprecated("All patreon related APIs will be removed in v2.1.0")]] XBLAZE_DLL PatreonSupporterTier {
-        None = 0,
-        PlainNormalSupporter = 1,
-        AmazingBeautifulCrab = 2
-    };
-
-    /**
-     * Check if the current user is supporting XblazeGMD on Patreon
-     */
-    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
-    XBLAZE_DLL PatreonSupporterTier patreonSupporterStatus(int accountID);
-
-    /**
-     * Check if the user has any tier on XblazeGMD's Patreon.
-     * This will only return `true` if the user is on a paid tier
-     */
-    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
-    XBLAZE_DLL inline bool isPatreonSupporter(int accountID);
-
-    /**
-     * Check if the user has the 'Plain Normal Supporter Tier' on XblazeGMD's Patreon
-     */
-    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
-    XBLAZE_DLL inline bool isPatreonPlainNormalSupporter(int accountID);
-
-    /**
-     * Check if the user has the 'Amazing Beautiful Crab Tier' on XblazeGMD's Patreon
-     */
-    [[deprecated("All patreon related APIs will be removed in v2.1.0")]]
-    XBLAZE_DLL inline bool isPatreonAmazingBeautifulCrab(int accountID);
 }
