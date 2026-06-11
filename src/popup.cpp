@@ -31,8 +31,8 @@ namespace xblazeapi {
 
         bool reverse
     ) {
-        geode::ZStringView btn1 = reverse ? std::move(yesBtn) : std::move(noBtn);
-        geode::ZStringView btn2 = reverse ? std::move(noBtn) : std::move(yesBtn);
+        geode::ZStringView btn1 = reverse ? yesBtn : noBtn;
+        geode::ZStringView btn2 = reverse ? noBtn : yesBtn;
 
         geode::createQuickPopup(
             title.c_str(),
