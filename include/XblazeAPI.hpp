@@ -40,8 +40,9 @@ namespace xblazeapi {
      * @param body The request body
      * @return `Ok` if request was successful, `Err` if it failed
      *
-     * NOTE: The `Err` value is an integer that can either be an http error
-     * code ('xxx'), a gd server error (negative number) or 0 if anything else
+     * @note If the request fails, the function will either return an HTTP error
+     * (e.g. "1xx", "2xx", etc), a server error (e.g. -1, -2, etc), or 0 if anything else
+     * happened
      */
     XBLAZE_DLL arc::Future<ServerResponse> requestGDServers(
         std::string_view endpoint,
@@ -52,7 +53,7 @@ namespace xblazeapi {
     /**
      * Fix the spaghetti mess rob's server response is.
      *
-     * NOTE: This will only work with the "key:val" pairs (other separators like "~" can
+     * @note This will only work with the "key:val" pairs (other separators like "~" can
      * be specified). If the response is, let's say, multiple objects separated by a "|", you
      * will need to separate them yourself.
      */
