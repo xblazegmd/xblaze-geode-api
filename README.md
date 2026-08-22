@@ -7,7 +7,7 @@ A collection of the most random utilities ever for my Geode mods
 Add this mod as a dependency on your `mod.json`
 ```json
 "dependencies": {
-    "xblazegmd.geode-api": ">=1.0.0"
+    "xblazegmd.geode-api": ">=2.1.0"
 }
 ```
 
