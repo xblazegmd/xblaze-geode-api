@@ -12,8 +12,8 @@ namespace xblazeapi {
         geode::ZStringView title,
         geode::ZStringView msg,
 
-        VoidCallback yesCb,
-        VoidCallback noCb,
+        PopupCallback yesCb,
+        PopupCallback noCb,
 
         bool reverse
     ) {
@@ -26,8 +26,8 @@ namespace xblazeapi {
         geode::ZStringView yesBtn,
         geode::ZStringView noBtn,
 
-        VoidCallback yesCb,
-        VoidCallback noCb,
+        PopupCallback yesCb,
+        PopupCallback noCb,
 
         bool reverse
     ) {

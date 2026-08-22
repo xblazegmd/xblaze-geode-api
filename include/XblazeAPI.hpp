@@ -32,7 +32,7 @@ namespace xblazeapi {
     inline const std::string SECRET = "Wmfd2893gb7";
 
     using ServerResponse = geode::Result<std::string, int>;
-    using VoidCallback = geode::Function<void()>;
+    using PopupCallback = geode::Function<void()>;
 
     /**
      * Make a request to the Geometry Dash servers.
@@ -83,8 +83,8 @@ namespace xblazeapi {
     XBLAZE_DLL void confirmYesNo(
         geode::ZStringView title,
         geode::ZStringView msg,
-        VoidCallback yesCb,
-        VoidCallback noCb = [] {},
+        PopupCallback yesCb,
+        PopupCallback noCb = [] {},
         bool reverse = false
     );
 
@@ -103,8 +103,8 @@ namespace xblazeapi {
         geode::ZStringView msg,
         geode::ZStringView yesBtn,
         geode::ZStringView noBtn,
-        VoidCallback yesCb,
-        VoidCallback noCb = [] {},
+        PopupCallback yesCb,
+        PopupCallback noCb = [] {},
         bool reverse = false
     );
 
