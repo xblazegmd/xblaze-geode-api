@@ -52,7 +52,7 @@ if (!connected) {
 }
 ```
 
-This function will check the internet connection with `GameToolbox::doWeHaveInternet` on mobile, and with a simple web request on PC.
+This function will check the internet connection with a simple web request.
 
 The default URL to make a request to is `http://connectivitycheck.gstatic.com/generate_204`, however you can specify whichever one you wish:
 ```cpp
