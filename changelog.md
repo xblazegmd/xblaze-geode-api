@@ -2,6 +2,7 @@
 ## 2.1.0
 - Remove deprecated functions
 - Optimize `buildBodyString` and use `ZStringView` in certain functions (#2 by @Thyrocytes)
+- Remove usage of `GameToolbox::doWeHaveInternet` in `doWeHaveInternet` (now exclusively checks with a web request)
 
 ## 2.0.0
 - Remove Patreon badges and deprecate Patreon APIs (no one's even a member on my patreon so it's useless)
